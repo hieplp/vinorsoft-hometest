@@ -1,0 +1,42 @@
+version: '3'
+services:
+  nhanvien:
+    container_name: nhanvien
+    build:
+      context: ./NhanVien
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - vinorsoft-network
+
+  giamdoc:
+    container_name: giamdoc
+    build:
+      context: ./GiamDoc
+    ports:
+      - "8081:8080"
+    depends_on:
+      - nhanvien
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - vinorsoft-network
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - vinorsoft-network
+
+networks:
+  vinorsoft-network:

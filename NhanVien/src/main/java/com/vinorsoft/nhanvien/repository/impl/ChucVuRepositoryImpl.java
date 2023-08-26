@@ -28,6 +28,12 @@ public class ChucVuRepositoryImpl extends BaseRepoImpl implements ChucVuReposito
     }
 
     @Override
+    public <T> Optional<T> findById(String id, Class<T> returnType) {
+        log.info("Find chucVu by id: {}", id);
+        return fetchOne(CHUC_VU, CHUC_VU.CHUC_VU_ID.eq(id), returnType);
+    }
+
+    @Override
     public boolean existsById(String id) {
         log.info("Check exist chucVu by id: {}", id);
         return fetchExist(CHUC_VU, CHUC_VU.CHUC_VU_ID.eq(id));

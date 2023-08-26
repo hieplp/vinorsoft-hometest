@@ -16,16 +16,11 @@ public interface BaseRepo {
 
     int updateNotNull(Record record);
 
-    void transaction(TransactionHandler handler);
-
-    <R extends Record> R fetchOneNotNull(Table<R> table, Condition condition);
-
-    <T> T fetchOneNotNull(Table<?> table, Condition condition, Class<? extends T> type);
-
     <T> Optional<T> fetchOne(Table<?> table, Condition condition, Class<? extends T> type);
 
-
     <T> Optional<T> fetchOne(Table<?> table, Condition condition, Class<? extends T> type, Field<?>... fields);
+
+    <T> Optional<T> fetchOne(Table<?> table, Condition condition, Class<? extends T> type, Field<?>[] mainFields, Field<?>... fields);
 
     boolean fetchExist(Table<?> table, Condition condition);
 

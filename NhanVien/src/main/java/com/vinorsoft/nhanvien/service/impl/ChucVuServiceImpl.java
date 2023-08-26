@@ -77,11 +77,8 @@ public class ChucVuServiceImpl implements ChucVuService {
     @Override
     public GetChucVuResponse getChucVu(String chucVuId) {
         log.info("Get chucVu: {}", chucVuId);
-        var chucVu = chucVuRepository.findById(chucVuId)
+        return chucVuRepository.findById(chucVuId, GetChucVuResponse.class)
                 .orElseThrow(() -> new NotFoundException("chucVu not found"));
-        var response = new GetChucVuResponse();
-        chucVu.into(response);
-        return response;
     }
 
     @Override

@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface PhongBanRepository extends BaseRepo {
     Optional<PhongBanRecord> findById(String id);
 
+    <T> Optional<T> findById(String id, Class<T> returnType);
+
     boolean existsById(String id);
 
     boolean existsByTenPhongBan(String tenPhongBan);

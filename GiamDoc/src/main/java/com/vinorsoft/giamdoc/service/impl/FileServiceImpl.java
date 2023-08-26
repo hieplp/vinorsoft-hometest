@@ -84,18 +84,16 @@ public class FileServiceImpl implements FileService {
                 return;
             }
 
-            //
-            var workbook = new XSSFWorkbook(file);
-            var worksheet = workbook.getSheetAt(0);
-
             var map = new HashMap<String, Long>();
 
+            var workbook = new XSSFWorkbook(file);
+            var worksheet = workbook.getSheetAt(0);
             for (int rowIndex = 1; rowIndex < worksheet.getPhysicalNumberOfRows(); rowIndex++) {
                 var row = worksheet.getRow(rowIndex);
                 var maNhanVien = row.getCell(0).getStringCellValue();
-                var luong = row.getCell(3).getStringCellValue()
+                var salary = row.getCell(3).getStringCellValue()
                         .replace(",", "");
-                map.put(maNhanVien, Long.parseLong(luong));
+                map.put(maNhanVien, Long.parseLong(salary));
             }
 
             var request = new UpdateSalaryOfNhanVienRequest();
@@ -109,7 +107,7 @@ public class FileServiceImpl implements FileService {
             workbook.close();
         } catch (IOException | InvalidFormatException e) {
             log.error("Failed to update salary by month: {}", e.getMessage());
-            throw new RuntimeException(e);
+            throw new StorageException(e.getMessage());
         }
     }
 }

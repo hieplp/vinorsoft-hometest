@@ -1,12 +1,10 @@
 package com.vinorsoft.nhanvien.repository.base;
 
 import com.vinorsoft.nhanvien.common.exception.ExecuteException;
-import com.vinorsoft.nhanvien.common.exception.NotFoundException;
 import com.vinorsoft.nhanvien.common.exception.QueryException;
 import com.vinorsoft.nhanvien.common.util.TableUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.*;
-import org.jooq.impl.DSL;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
@@ -67,42 +65,6 @@ public class BaseRepoImpl implements BaseRepo {
     }
 
     @Override
-    public void transaction(TransactionHandler handler) {
-        try {
-            context.transaction(configuration -> handler.handle(DSL.using(configuration)));
-        } catch (Exception e) {
-            log.error("Error when execute transaction: {}", e.getMessage());
-            throw new ExecuteException(e.getMessage());
-        }
-    }
-
-    @Override
-    public <R extends Record> R fetchOneNotNull(Table<R> table, Condition condition) {
-        try {
-            return context.fetch(table, condition).get(0);
-        } catch (IndexOutOfBoundsException e) {
-            log.error("Not found record: {}", e.getMessage());
-            throw new NotFoundException(e.getMessage());
-        } catch (Exception e) {
-            log.error("Error when fetch one not null record: {}", e.getMessage());
-            throw new QueryException(e.getMessage());
-        }
-    }
-
-    @Override
-    public <T> T fetchOneNotNull(Table<?> table, Condition condition, Class<? extends T> type) {
-        try {
-            return context.fetch(table, condition).into(type).get(0);
-        } catch (IndexOutOfBoundsException e) {
-            log.error("Not found record: {}", e.getMessage());
-            throw new NotFoundException(e.getMessage());
-        } catch (Exception e) {
-            log.error("Error when fetch one not null record: {}", e.getMessage());
-            throw new QueryException(e.getMessage());
-        }
-    }
-
-    @Override
     public <T> Optional<T> fetchOne(Table<?> table, Condition condition, Class<? extends T> type) {
         try {
             return Optional.of(context.fetch(table, condition).into(type).get(0));
@@ -119,6 +81,24 @@ public class BaseRepoImpl implements BaseRepo {
     public <T> Optional<T> fetchOne(Table<?> table, Condition condition, Class<? extends T> type, Field<?>... fields) {
         try {
             return Optional.of(context.select(fields)
+                    .from(table)
+                    .where(condition)
+                    .fetchInto(type).get(0));
+        } catch (IndexOutOfBoundsException e) {
+            log.error("Not found record: {}", e.getMessage());
+            return Optional.empty();
+        } catch (Exception e) {
+            log.error("Error when fetch one not null record: {}", e.getMessage());
+            throw new QueryException(e.getMessage());
+        }
+    }
+
+    @Override
+    public <T> Optional<T> fetchOne(Table<?> table, Condition condition, Class<? extends T> type, Field<?>[] mainFields, Field<?>... fields) {
+        try {
+            return Optional.of(context
+                    .select(mainFields)
+                    .select(fields)
                     .from(table)
                     .where(condition)
                     .fetchInto(type).get(0));

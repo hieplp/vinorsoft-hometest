@@ -15,6 +15,8 @@ public interface NhanVienRepository extends BaseRepo {
 
     Optional<NhanVienRecord> findByMaNhanVien(String maNhanVien);
 
+    <T> Optional<T> findByMaNhanVien(String maNhanVien, Class<T> returnType);
+
     int countNhanVienByPhongBanId(String phongBanId);
 
     int countNhanVienByChucVuId(String chucVuId);

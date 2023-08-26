@@ -75,9 +75,8 @@ public class NhanVienServiceImpl implements NhanVienService {
                 .setTrangThai(UserStatus.ACTIVE.getStatus());
         nhanVienRepository.save(nhanVien);
 
-        var response = new CreateNhanVienResponse();
-        nhanVien.into(response);
-        return response;
+        return nhanVienRepository.findByMaNhanVien(nhanVien.getMaNhanVien(), CreateNhanVienResponse.class)
+                .orElseThrow(() -> new NotFoundException("NhanVien not found"));
     }
 
     @Override
@@ -123,19 +122,15 @@ public class NhanVienServiceImpl implements NhanVienService {
         }
         nhanVienRepository.updateNotNull(nhanVien);
 
-        var response = new UpdateNhanVienResponse();
-        nhanVien.into(response);
-        return response;
+        return nhanVienRepository.findByMaNhanVien(nhanVien.getMaNhanVien(), UpdateNhanVienResponse.class)
+                .orElseThrow(() -> new NotFoundException("NhanVien not found"));
     }
 
     @Override
     public GetNhanVienResponse getNhanVien(String maNhanVien) {
         log.info("Get nhanVien: {}", maNhanVien);
-        var nhanVien = nhanVienRepository.findByMaNhanVien(maNhanVien)
+        return nhanVienRepository.findByMaNhanVien(maNhanVien, GetNhanVienResponse.class)
                 .orElseThrow(() -> new NotFoundException("NhanVien not found"));
-        var response = new GetNhanVienResponse();
-        nhanVien.into(response);
-        return response;
     }
 
     @Override
@@ -170,7 +165,7 @@ public class NhanVienServiceImpl implements NhanVienService {
             }
 
             var nhanVien = optionalNhanVien.get();
-//            nhanVien.setLuong(entry.getValue());
+            nhanVien.setLuong(entry.getValue());
             nhanVienRepository.updateNotNull(nhanVien);
         }
     }

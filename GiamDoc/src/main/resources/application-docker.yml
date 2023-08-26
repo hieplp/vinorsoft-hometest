@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
   error:
     include-message: always
     include-binding-errors: always
@@ -9,4 +9,4 @@ spring:
     name: giamdoc-service
 app:
   cron: 0 0 0 15 * ?
-  update-salary-of-nhan-vien-uri: http://localhost:8080/nhan-vien/update-salary
+  update-salary-of-nhan-vien-uri: http://nhanvien:8080/nhan-vien/update-salary

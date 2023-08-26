@@ -60,6 +60,17 @@ public class NhanVienRepositoryImpl extends BaseRepoImpl implements NhanVienRepo
     }
 
     @Override
+    public <T> Optional<T> findByMaNhanVien(String maNhanVien, Class<T> returnType) {
+        log.info("Find nhanVien by maNhanVien: {}", maNhanVien);
+        return fetchOne(NHAN_VIEN_
+                        .join(PHONG_BAN).on(NHAN_VIEN_.PHONG_BAN_ID.eq(PHONG_BAN.PHONG_BAN_ID))
+                        .join(CHUC_VU).on(NHAN_VIEN_.CHUC_VU_ID.eq(CHUC_VU.CHUC_VU_ID)),
+                NHAN_VIEN_.MA_NHAN_VIEN.eq(maNhanVien), returnType,
+                NHAN_VIEN_.fields(), PHONG_BAN.TEN_PHONG_BAN, CHUC_VU.TEN_CHUC_VU
+        );
+    }
+
+    @Override
     public int countNhanVienByPhongBanId(String phongBanId) {
         log.info("Count nhanVien by phongBanId: {}", phongBanId);
         return Objects.requireNonNull(context.selectCount()

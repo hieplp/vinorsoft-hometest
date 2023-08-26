@@ -17,7 +17,7 @@ plugins {
 }
 
 group = 'com.vinorsoft'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java {
     sourceCompatibility = '11'
@@ -59,27 +59,27 @@ tasks.named('test') {
 // XXX: Generate SQL. Should be commented after first run
 // ------------------------------------------------------------
 
-import org.jooq.codegen.GenerationTool
-import org.jooq.meta.jaxb.*
+//import org.jooq.codegen.GenerationTool
+//import org.jooq.meta.jaxb.*
 
-GenerationTool.generate(new Configuration()
-
-        .withJdbc(new Jdbc()
-                .withDriver('org.mariadb.jdbc.Driver')
-                .withUrl('jdbc:mariadb://127.0.0.1:3306/nhan_vien')
-                .withUser('root')
-                .withPassword('123456'))
-
-        .withGenerator(new Generator()
-                .withDatabase(new Database()
-                        .withName("org.jooq.meta.mysql.MySQLDatabase")
-                        .withInputSchema("nhan_vien")
-                        .withOutputSchema("nhan_vien")
-                )
-                .withGenerate(new Generate()
-                        .withFluentSetters(true)
-                        .withPojos(true)
-                        .withDaos(true))
-                .withTarget(new Target()
-                        .withPackageName('com.vinorsoft.nhanvien.repository.generate')
-                        .withDirectory('/home/hieplp/Projects/vinorsoft-hometest/NhanVien/src/main/java'))))
+//GenerationTool.generate(new Configuration()
+//
+//        .withJdbc(new Jdbc()
+//                .withDriver('org.mariadb.jdbc.Driver')
+//                .withUrl('jdbc:mariadb://127.0.0.1:3306/nhan_vien')
+//                .withUser('root')
+//                .withPassword('123456'))
+//
+//        .withGenerator(new Generator()
+//                .withDatabase(new Database()
+//                        .withName("org.jooq.meta.mysql.MySQLDatabase")
+//                        .withInputSchema("nhan_vien")
+//                        .withOutputSchema("nhan_vien")
+//                )
+//                .withGenerate(new Generate()
+//                        .withFluentSetters(true)
+//                        .withPojos(true)
+//                        .withDaos(true))
+//                .withTarget(new Target()
+//                        .withPackageName('com.vinorsoft.nhanvien.repository.generate')
+//                        .withDirectory('/home/hieplp/Projects/vinorsoft-hometest/NhanVien/src/main/java'))))

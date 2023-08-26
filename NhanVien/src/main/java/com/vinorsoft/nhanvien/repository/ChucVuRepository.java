@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface ChucVuRepository extends BaseRepo {
     Optional<ChucVuRecord> findById(String id);
 
+    <T> Optional<T> findById(String id, Class<T> returnType);
+
     boolean existsById(String id);
 
     boolean existsByTenChucVu(String tenChucVu);

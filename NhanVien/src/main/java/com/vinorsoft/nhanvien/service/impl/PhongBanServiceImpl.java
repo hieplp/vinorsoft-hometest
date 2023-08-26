@@ -79,11 +79,8 @@ public class PhongBanServiceImpl implements PhongBanService {
     @Override
     public GetPhongBanResponse getPhongBan(String phongBanId) {
         log.info("Get phongBan: {}", phongBanId);
-        var phongBan = phongBanRepository.findById(phongBanId)
+        return phongBanRepository.findById(phongBanId, GetPhongBanResponse.class)
                 .orElseThrow(() -> new NotFoundException("PhongBan not found"));
-        var response = new GetPhongBanResponse();
-        phongBan.into(response);
-        return response;
     }
 
     @Override

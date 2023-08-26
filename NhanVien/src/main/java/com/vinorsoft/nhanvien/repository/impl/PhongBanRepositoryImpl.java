@@ -26,6 +26,12 @@ public class PhongBanRepositoryImpl extends BaseRepoImpl implements PhongBanRepo
     }
 
     @Override
+    public <T> Optional<T> findById(String id, Class<T> returnType) {
+        log.info("Find phongBan by id: {}", id);
+        return fetchOne(PHONG_BAN, PHONG_BAN.PHONG_BAN_ID.eq(id), returnType);
+    }
+
+    @Override
     public boolean existsById(String id) {
         log.info("Check exist phongBan by id: {}", id);
         return fetchExist(PHONG_BAN, PHONG_BAN.PHONG_BAN_ID.eq(id));
