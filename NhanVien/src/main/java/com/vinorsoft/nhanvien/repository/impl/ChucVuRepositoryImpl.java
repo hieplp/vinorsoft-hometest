@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.vinorsoft.nhanvien.repository.generate.Tables.CHUC_VU;
@@ -36,5 +37,11 @@ public class ChucVuRepositoryImpl extends BaseRepoImpl implements ChucVuReposito
     public boolean existsByTenChucVu(String tenChucVu) {
         log.info("Check exist chucVu by tenChucVu: {}", tenChucVu);
         return fetchExist(CHUC_VU, CHUC_VU.TEN_CHUC_VU.eq(tenChucVu));
+    }
+
+    @Override
+    public <T> List<T> getAllChucVu(Class<T> returnType) {
+        log.info("Get all chucVu");
+        return fetchAll(CHUC_VU, returnType);
     }
 }

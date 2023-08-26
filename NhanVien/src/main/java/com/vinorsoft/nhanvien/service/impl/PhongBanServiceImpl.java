@@ -3,10 +3,11 @@ package com.vinorsoft.nhanvien.service.impl;
 import com.vinorsoft.nhanvien.common.enums.IdLength;
 import com.vinorsoft.nhanvien.common.exception.BadRequestException;
 import com.vinorsoft.nhanvien.common.exception.NotFoundException;
-import com.vinorsoft.nhanvien.common.exception.department.DuplicatedDepartmentException;
+import com.vinorsoft.nhanvien.common.exception.phongban.DuplicatedDepartmentException;
 import com.vinorsoft.nhanvien.common.util.GeneratorUtil;
 import com.vinorsoft.nhanvien.payload.request.phongban.CreatePhongBanRequest;
 import com.vinorsoft.nhanvien.payload.request.phongban.UpdatePhongBanRequest;
+import com.vinorsoft.nhanvien.payload.response.phongban.CommonPhongBanResponse;
 import com.vinorsoft.nhanvien.payload.response.phongban.CreatePhongBanResponse;
 import com.vinorsoft.nhanvien.payload.response.phongban.GetPhongBanResponse;
 import com.vinorsoft.nhanvien.payload.response.phongban.UpdatePhongBanResponse;
@@ -20,6 +21,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -99,5 +101,11 @@ public class PhongBanServiceImpl implements PhongBanService {
         }
 
         phongBanRepository.delete(phongBan);
+    }
+
+    @Override
+    public List<CommonPhongBanResponse> getAllPhongBan() {
+        log.info("Get all phongBan");
+        return phongBanRepository.getAllPhongBan(CommonPhongBanResponse.class);
     }
 }

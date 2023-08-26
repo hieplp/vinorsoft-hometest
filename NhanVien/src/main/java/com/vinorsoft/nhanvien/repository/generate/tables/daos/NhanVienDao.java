@@ -111,14 +111,14 @@ public class NhanVienDao extends DAOImpl<NhanVienRecord, com.vinorsoft.nhanvien.
     /**
      * Fetch records that have <code>luong BETWEEN lowerInclusive AND upperInclusive</code>
      */
-    public List<com.vinorsoft.nhanvien.repository.generate.tables.pojos.NhanVien> fetchRangeOfLuong(Double lowerInclusive, Double upperInclusive) {
+    public List<com.vinorsoft.nhanvien.repository.generate.tables.pojos.NhanVien> fetchRangeOfLuong(Long lowerInclusive, Long upperInclusive) {
         return fetchRange(NhanVien.NHAN_VIEN_.LUONG, lowerInclusive, upperInclusive);
     }
 
     /**
      * Fetch records that have <code>luong IN (values)</code>
      */
-    public List<com.vinorsoft.nhanvien.repository.generate.tables.pojos.NhanVien> fetchByLuong(Double... values) {
+    public List<com.vinorsoft.nhanvien.repository.generate.tables.pojos.NhanVien> fetchByLuong(Long... values) {
         return fetch(NhanVien.NHAN_VIEN_.LUONG, values);
     }
 

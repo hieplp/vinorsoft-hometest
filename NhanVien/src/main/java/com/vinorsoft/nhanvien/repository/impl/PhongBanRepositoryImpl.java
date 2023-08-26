@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.vinorsoft.nhanvien.repository.generate.Tables.PHONG_BAN;
@@ -34,5 +35,11 @@ public class PhongBanRepositoryImpl extends BaseRepoImpl implements PhongBanRepo
     public boolean existsByTenPhongBan(String tenPhongBan) {
         log.info("Check exist phongBan by tenPhongBan: {}", tenPhongBan);
         return fetchExist(PHONG_BAN, PHONG_BAN.TEN_PHONG_BAN.eq(tenPhongBan));
+    }
+
+    @Override
+    public <T> List<T> getAllPhongBan(Class<T> returnType) {
+        log.info("Get all phongBan");
+        return fetchAll(PHONG_BAN, returnType);
     }
 }

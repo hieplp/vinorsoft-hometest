@@ -10,6 +10,7 @@ import org.jooq.impl.DSL;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -135,7 +136,17 @@ public class BaseRepoImpl implements BaseRepo {
         try {
             return context.fetchExists(table, condition);
         } catch (Exception e) {
-            log.info("Error when fetch exist record: {}", e.getMessage());
+            log.error("Error when fetch exist record: {}", e.getMessage());
+            throw new QueryException(e.getMessage());
+        }
+    }
+
+    @Override
+    public <T> List<T> fetchAll(Table<?> table, Class<? extends T> type) {
+        try {
+            return context.selectFrom(table).fetchInto(type);
+        } catch (Exception e) {
+            log.error("Error when fetch all record: {}", e.getMessage());
             throw new QueryException(e.getMessage());
         }
     }

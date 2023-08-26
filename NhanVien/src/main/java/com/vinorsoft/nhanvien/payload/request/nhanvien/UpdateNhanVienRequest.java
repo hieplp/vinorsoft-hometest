@@ -35,7 +35,7 @@ public class UpdateNhanVienRequest {
     private String chucVuId;
 
     @NotNull(message = "luong is mandatory")
-    private Double luong;
+    private Long luong;
 
     private Byte trangThai;
 }

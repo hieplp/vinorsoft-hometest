@@ -5,6 +5,7 @@ import com.vinorsoft.nhanvien.common.payload.request.CommonGetRequest;
 import com.vinorsoft.nhanvien.common.payload.response.CommonResponse;
 import com.vinorsoft.nhanvien.payload.request.nhanvien.CreateNhanVienRequest;
 import com.vinorsoft.nhanvien.payload.request.nhanvien.UpdateNhanVienRequest;
+import com.vinorsoft.nhanvien.payload.request.nhanvien.UpdateSalaryOfNhanVienRequest;
 import com.vinorsoft.nhanvien.service.NhanVienService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -60,6 +61,13 @@ public class NhanVienController {
     public ResponseEntity<CommonResponse> deleteNhanVien(@PathVariable String maNhanVien) {
         log.info("Delete nhanVien: {}", maNhanVien);
         nhanVienService.deleteNhanVien(maNhanVien);
+        return ResponseEntity.ok(new CommonResponse(SuccessCode.SUCCESS));
+    }
+
+    @PutMapping("/update-salary")
+    public ResponseEntity<CommonResponse> updateSalaryOfNhanVien(@Valid @RequestBody UpdateSalaryOfNhanVienRequest request) {
+        log.info("Update salary of nhanVien with request: {}", request);
+        nhanVienService.updateSalaryOfNhanVien(request.getSalaries());
         return ResponseEntity.ok(new CommonResponse(SuccessCode.SUCCESS));
     }
 }

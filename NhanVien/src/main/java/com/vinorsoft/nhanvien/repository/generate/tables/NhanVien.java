@@ -46,7 +46,7 @@ public class NhanVien extends TableImpl<NhanVienRecord> {
     /**
      * The column <code>nhan_vien.nhan_vien.luong</code>.
      */
-    public final TableField<NhanVienRecord, Double> LUONG = createField(DSL.name("luong"), SQLDataType.DOUBLE.nullable(false), this, "");
+    public final TableField<NhanVienRecord, Long> LUONG = createField(DSL.name("luong"), SQLDataType.BIGINT.nullable(false), this, "");
     /**
      * The column <code>nhan_vien.nhan_vien.ma_nhan_vien</code>.
      */
@@ -164,7 +164,7 @@ public class NhanVien extends TableImpl<NhanVienRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row11<Integer, String, String, String, Double, String, LocalDate, String, String, String, Byte> fieldsRow() {
+    public Row11<Integer, String, String, String, Long, String, LocalDate, String, String, String, Byte> fieldsRow() {
         return (Row11) super.fieldsRow();
     }
 }

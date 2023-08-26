@@ -1,0 +1,12 @@
+server:
+  port: 8081
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  application:
+    name: giamdoc-service
+app:
+  cron: 1 * * * * *
+  update-salary-of-nhan-vien-uri: http://localhost:8080/nhan-vien/update-salary

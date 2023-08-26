@@ -42,7 +42,7 @@ public class NhanVien {
     @Column(length = 10)
     private String chucVuId;
 
-    private double luong;
+    private long luong;
 
     private byte trangThai;
 }

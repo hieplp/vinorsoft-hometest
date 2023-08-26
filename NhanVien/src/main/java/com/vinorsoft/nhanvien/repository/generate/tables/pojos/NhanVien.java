@@ -20,7 +20,7 @@ public class NhanVien implements Serializable {
     private String chucVuId;
     private String email;
     private String hoVaTen;
-    private Double luong;
+    private Long luong;
     private String maNhanVien;
     private LocalDate ngaySinh;
     private String phongBanId;
@@ -50,7 +50,7 @@ public class NhanVien implements Serializable {
             String chucVuId,
             String email,
             String hoVaTen,
-            Double luong,
+            Long luong,
             String maNhanVien,
             LocalDate ngaySinh,
             String phongBanId,
@@ -134,14 +134,14 @@ public class NhanVien implements Serializable {
     /**
      * Getter for <code>nhan_vien.nhan_vien.luong</code>.
      */
-    public Double getLuong() {
+    public Long getLuong() {
         return this.luong;
     }
 
     /**
      * Setter for <code>nhan_vien.nhan_vien.luong</code>.
      */
-    public NhanVien setLuong(Double luong) {
+    public NhanVien setLuong(Long luong) {
         this.luong = luong;
         return this;
     }

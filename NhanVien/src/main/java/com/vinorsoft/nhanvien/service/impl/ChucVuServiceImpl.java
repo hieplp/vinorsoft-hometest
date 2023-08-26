@@ -2,10 +2,11 @@ package com.vinorsoft.nhanvien.service.impl;
 
 import com.vinorsoft.nhanvien.common.enums.IdLength;
 import com.vinorsoft.nhanvien.common.exception.NotFoundException;
-import com.vinorsoft.nhanvien.common.exception.role.DuplicatedRoleException;
+import com.vinorsoft.nhanvien.common.exception.chucvu.DuplicatedRoleException;
 import com.vinorsoft.nhanvien.common.util.GeneratorUtil;
 import com.vinorsoft.nhanvien.payload.request.chucvu.CreateChucVuRequest;
 import com.vinorsoft.nhanvien.payload.request.chucvu.UpdateChucVuRequest;
+import com.vinorsoft.nhanvien.payload.response.chucvu.CommonChucVuResponse;
 import com.vinorsoft.nhanvien.payload.response.chucvu.CreateChucVuResponse;
 import com.vinorsoft.nhanvien.payload.response.chucvu.GetChucVuResponse;
 import com.vinorsoft.nhanvien.payload.response.chucvu.UpdateChucVuResponse;
@@ -18,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -84,7 +86,7 @@ public class ChucVuServiceImpl implements ChucVuService {
 
     @Override
     @Transactional
-    public void deleteRole(String chucVuId) {
+    public void deleteChucVu(String chucVuId) {
         log.info("Delete chucVu: {}", chucVuId);
 
         var chucVu = chucVuRepository.findById(chucVuId)
@@ -97,5 +99,11 @@ public class ChucVuServiceImpl implements ChucVuService {
         }
 
         chucVuRepository.delete(chucVu);
+    }
+
+    @Override
+    public List<CommonChucVuResponse> getAllChucVu() {
+        log.info("Get all chucVu");
+        return chucVuRepository.getAllChucVu(CommonChucVuResponse.class);
     }
 }

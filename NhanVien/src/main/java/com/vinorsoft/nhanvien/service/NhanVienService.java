@@ -10,6 +10,7 @@ import com.vinorsoft.nhanvien.payload.response.nhanvien.GetNhanVienResponse;
 import com.vinorsoft.nhanvien.payload.response.nhanvien.UpdateNhanVienResponse;
 
 import java.util.List;
+import java.util.Map;
 
 public interface NhanVienService {
     CreateNhanVienResponse createNhanVien(CreateNhanVienRequest request);
@@ -23,4 +24,6 @@ public interface NhanVienService {
     List<CommonNhanVienResponse> getListOfNhanVien(CommonGetRequest request);
 
     CommonGetResponse<CommonNhanVienResponse> getPagingListOfNhanVien(CommonGetRequest request);
+
+    void updateSalaryOfNhanVien(Map<String, Long> salaries);
 }

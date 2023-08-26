@@ -1,4 +1,4 @@
-package com.vinorsoft.nhanvien.common.exception.role;
+package com.vinorsoft.nhanvien.common.exception.chucvu;
 
 
 import com.vinorsoft.nhanvien.common.exception.BaseException;

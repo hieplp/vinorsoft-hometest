@@ -20,36 +20,43 @@ import javax.validation.Valid;
 public class ChucVuController {
     private final static String CHUC_VU_ID_PATH = "/{chucVuId}";
 
-    private final ChucVuService roleService;
+    private final ChucVuService chucVuService;
 
     @PostMapping
-    public ResponseEntity<CommonResponse> createRole(@Valid @RequestBody CreateChucVuRequest request) {
-        log.info("Create role with request: {}", request);
-        var data = roleService.createChucVu(request);
+    public ResponseEntity<CommonResponse> createChucVu(@Valid @RequestBody CreateChucVuRequest request) {
+        log.info("Create chucVu with request: {}", request);
+        var data = chucVuService.createChucVu(request);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new CommonResponse(SuccessCode.SUCCESS, data));
     }
 
+    @GetMapping
+    public ResponseEntity<CommonResponse> getAllChucVu() {
+        log.info("Get all chucVu");
+        var data = chucVuService.getAllChucVu();
+        return ResponseEntity.ok(new CommonResponse(SuccessCode.SUCCESS, data));
+    }
+
     @PutMapping(CHUC_VU_ID_PATH)
-    public ResponseEntity<CommonResponse> updateRole(@PathVariable String chucVuId,
-                                                     @Valid @RequestBody UpdateChucVuRequest request) {
-        log.info("Update role: {} with request: {}", chucVuId, request);
-        var data = roleService.updateChucVu(chucVuId, request);
+    public ResponseEntity<CommonResponse> updateChucVu(@PathVariable String chucVuId,
+                                                       @Valid @RequestBody UpdateChucVuRequest request) {
+        log.info("Update chucVu: {} with request: {}", chucVuId, request);
+        var data = chucVuService.updateChucVu(chucVuId, request);
         return ResponseEntity.ok(new CommonResponse(SuccessCode.SUCCESS, data));
     }
 
     @GetMapping(CHUC_VU_ID_PATH)
-    public ResponseEntity<CommonResponse> getRole(@PathVariable String chucVuId) {
-        log.info("Get role: {}", chucVuId);
-        var data = roleService.getChucVu(chucVuId);
+    public ResponseEntity<CommonResponse> getChucVu(@PathVariable String chucVuId) {
+        log.info("Get chucVu: {}", chucVuId);
+        var data = chucVuService.getChucVu(chucVuId);
         return ResponseEntity.ok(new CommonResponse(SuccessCode.SUCCESS, data));
     }
 
     @DeleteMapping(CHUC_VU_ID_PATH)
-    public ResponseEntity<CommonResponse> deleteRole(@PathVariable String chucVuId) {
-        log.info("Delete role: {}", chucVuId);
-        roleService.deleteRole(chucVuId);
+    public ResponseEntity<CommonResponse> deleteChucVu(@PathVariable String chucVuId) {
+        log.info("Delete chucVu: {}", chucVuId);
+        chucVuService.deleteChucVu(chucVuId);
         return ResponseEntity.ok(new CommonResponse(SuccessCode.SUCCESS));
     }
 }

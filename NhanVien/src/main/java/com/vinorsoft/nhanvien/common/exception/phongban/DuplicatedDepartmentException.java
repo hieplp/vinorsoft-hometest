@@ -1,4 +1,4 @@
-package com.vinorsoft.nhanvien.common.exception.department;
+package com.vinorsoft.nhanvien.common.exception.phongban;
 
 
 import com.vinorsoft.nhanvien.common.exception.BaseException;

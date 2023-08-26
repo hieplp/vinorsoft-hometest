@@ -19,6 +19,6 @@ public class CommonNhanVienResponse {
     private String email;
     private String phongBanId;
     private String chucVuId;
-    private double luong;
+    private long luong;
     private byte trangThai;
 }

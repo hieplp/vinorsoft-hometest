@@ -35,5 +35,5 @@ public class CreateNhanVienRequest {
     private String chucVuId;
 
     @NotNull(message = "luong is mandatory")
-    private double luong;
+    private Long luong;
 }

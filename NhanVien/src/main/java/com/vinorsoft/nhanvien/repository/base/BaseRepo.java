@@ -5,26 +5,17 @@ import org.jooq.Field;
 import org.jooq.Record;
 import org.jooq.Table;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface BaseRepo {
 
     int save(Record record);
 
-    /**
-     * Delete record from database
-     *
-     * @param record record to delete
-     */
     int delete(Record record);
 
     int updateNotNull(Record record);
 
-    /**
-     * Execute transaction
-     *
-     * @param handler transaction handler
-     */
     void transaction(TransactionHandler handler);
 
     <R extends Record> R fetchOneNotNull(Table<R> table, Condition condition);
@@ -37,4 +28,6 @@ public interface BaseRepo {
     <T> Optional<T> fetchOne(Table<?> table, Condition condition, Class<? extends T> type, Field<?>... fields);
 
     boolean fetchExist(Table<?> table, Condition condition);
+
+    <T> List<T> fetchAll(Table<?> table, Class<? extends T> type);
 }

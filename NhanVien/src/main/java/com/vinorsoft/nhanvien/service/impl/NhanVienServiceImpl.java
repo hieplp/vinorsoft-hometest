@@ -25,6 +25,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -156,5 +157,21 @@ public class NhanVienServiceImpl implements NhanVienService {
     public CommonGetResponse<CommonNhanVienResponse> getPagingListOfNhanVien(CommonGetRequest request) {
         log.info("Get paging list of nhanVien with request: {}", request);
         return nhanVienRepository.getPagingListOfNhanVien(request, CommonNhanVienResponse.class);
+    }
+
+    @Override
+    public void updateSalaryOfNhanVien(Map<String, Long> salaries) {
+        log.info("Update salary of nhanVien with request: {}", salaries);
+        for (var entry : salaries.entrySet()) {
+            var optionalNhanVien = nhanVienRepository.findByMaNhanVien(entry.getKey());
+            if (optionalNhanVien.isEmpty()) {
+                log.error("NhanVien with maNhanVien {} not found", entry.getKey());
+                continue;
+            }
+
+            var nhanVien = optionalNhanVien.get();
+//            nhanVien.setLuong(entry.getValue());
+            nhanVienRepository.updateNotNull(nhanVien);
+        }
     }
 }
