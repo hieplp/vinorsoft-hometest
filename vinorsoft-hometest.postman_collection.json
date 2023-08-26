@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "1b71bf76-9696-4def-a42b-5a1806647770",
+		"name": "vinorsoft-hometest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9006063"
+	},
+	"item": [
+		{
+			"name": "phong-ban",
+			"item": [
+				{
+					"name": "create phongBan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tenPhongBan\": \"HCM3\",\n    \"chucNang\": \"HCM2\"\n}"
+						},
+						"url": {
+							"raw": "{{nv-host}}/phong-ban",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"phong-ban"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update phongBan",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tenPhongBan\": \"string22222\",\n    \"chucNang\": \"HCM\"\n}"
+						},
+						"url": {
+							"raw": "{{nv-host}}/phong-ban/HUVNZKNUDX",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"phong-ban",
+								"HUVNZKNUDX"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get phongBan",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/phong-ban/HUVNZKNUDX",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"phong-ban",
+								"HUVNZKNUDX"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all phongBan",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/phong-ban",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"phong-ban"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete phongBan",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/phong-ban/HUVNZKNUDX",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"phong-ban",
+								"HUVNZKNUDX"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chuc-vu",
+			"item": [
+				{
+					"name": "create chucVu",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tenChucVu\": \"string2\",\n    \"thamQuyen\": \"string1\"\n}"
+						},
+						"url": {
+							"raw": "{{nv-host}}/chuc-vu",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"chuc-vu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update chucVu",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tenChucVu\": \"string1\",\n    \"thamQuyen\": \"string\"\n}"
+						},
+						"url": {
+							"raw": "{{nv-host}}/chuc-vu/SMHNHJPOFH",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"chuc-vu",
+								"SMHNHJPOFH"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get chucVu",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/chuc-vu/ROLVBGXGRN",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"chuc-vu",
+								"ROLVBGXGRN"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all chucVu",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/chuc-vu",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"chuc-vu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete chucVu",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/chuc-vu/SMHNHJPOFH",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"chuc-vu",
+								"SMHNHJPOFH"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "nhan-vien",
+			"item": [
+				{
+					"name": "create nhanVien",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test3@example.com\",\n    \"hoVaTen\": \"string\",\n    \"queQuan\": \"string\",\n    \"sdt\": \"0000000004\",\n    \"luong\": 10,\n    \"ngaySinh\": \"1999-08-23T14:56:20.788Z\",\n    \"phongBanId\": \"ODKOWAZJHB\",\n    \"chucVuId\": \"NKAFDVUWID\"\n}"
+						},
+						"url": {
+							"raw": "{{nv-host}}/nhan-vien",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"nhan-vien"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update nhanVien",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test6@example.com\",\n    \"hoVaTen\": \"string\",\n    \"queQuan\": \"string\",\n    \"sdt\": \"0000000002\",\n    \"luong\": 10,\n    \"ngaySinh\": \"1999-08-23T14:56:20.788Z\",\n    \"phongBanId\": \"RRXDSALFOT\",\n    \"chucVuId\": \"HZPJUEMNCI\"\n}"
+						},
+						"url": {
+							"raw": "{{nv-host}}/nhan-vien/076177",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"nhan-vien",
+								"076177"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get nhanVien",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/nhan-vien/174014",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"nhan-vien",
+								"174014"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list of nhanVien",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/nhan-vien?searchBy=tenPhongBan&searchValue=HCM&filterBy=trangThai&filterValue=2",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"nhan-vien"
+							],
+							"query": [
+								{
+									"key": "searchBy",
+									"value": "tenPhongBan",
+									"description": "hoVaTen, queQuan, tenPhongBan, tenChucVu"
+								},
+								{
+									"key": "searchValue",
+									"value": "HCM"
+								},
+								{
+									"key": "filterBy",
+									"value": "trangThai",
+									"description": "phongBanId, chucVuId, trangThai"
+								},
+								{
+									"key": "filterValue",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete nhanVien",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{nv-host}}/nhan-vien/297959",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"nhan-vien",
+								"297959"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update salary of nhan vien",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"salaries\": {\n        \"113117\": 1110\n    }\n}"
+						},
+						"url": {
+							"raw": "{{nv-host}}/nhan-vien/update-salary",
+							"host": [
+								"{{nv-host}}"
+							],
+							"path": [
+								"nhan-vien",
+								"update-salary"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "giam-doc",
+			"item": [
+				{
+					"name": "upload file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/hieplp/Downloads/BangLuongThang_8_2023.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{gd-host}}/giam-doc",
+							"host": [
+								"{{gd-host}}"
+							],
+							"path": [
+								"giam-doc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "nv-host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "gd-host",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
