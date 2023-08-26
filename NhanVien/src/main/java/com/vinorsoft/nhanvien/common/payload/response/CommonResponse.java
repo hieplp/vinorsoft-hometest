@@ -22,4 +22,10 @@ public class CommonResponse {
         this.message = response.getMessage();
         this.data = data;
     }
+
+    public CommonResponse(ResponseCode responseCode, String message) {
+        this.code = responseCode.getCode();
+        this.message = message;
+        this.data = new HashMap<>();
+    }
 }

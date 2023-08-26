@@ -1,10 +1,14 @@
 package com.vinorsoft.nhanvien.repository;
 
-import com.vinorsoft.nhanvien.common.entity.ChucVu;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.vinorsoft.nhanvien.repository.base.BaseRepo;
+import com.vinorsoft.nhanvien.repository.generate.tables.records.ChucVuRecord;
 
-@Repository
-public interface ChucVuRepository extends JpaRepository<ChucVu, String> {
+import java.util.Optional;
+
+public interface ChucVuRepository extends BaseRepo {
+    Optional<ChucVuRecord> findById(String id);
+
+    boolean existsById(String id);
+
     boolean existsByTenChucVu(String tenChucVu);
 }

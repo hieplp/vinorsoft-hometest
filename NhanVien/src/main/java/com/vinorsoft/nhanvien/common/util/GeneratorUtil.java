@@ -20,8 +20,20 @@ public class GeneratorUtil {
         return userId.toString();
     }
 
+    public static String randomNumString(int length) {
+        StringBuilder userId = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int index = ThreadLocalRandom.current().nextInt(CHAR_LIST_NUMBER.length());
+            userId.append(CHAR_LIST_NUMBER.charAt(index));
+        }
+        return userId.toString();
+    }
+
     public static String generateId(IdLength idLength) {
         return randomString(idLength.getLength());
     }
 
+    public static String generateNumId(IdLength idLength) {
+        return randomNumString(idLength.getLength());
+    }
 }

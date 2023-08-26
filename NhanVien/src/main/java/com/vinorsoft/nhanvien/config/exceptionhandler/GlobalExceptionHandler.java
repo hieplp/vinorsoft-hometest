@@ -2,6 +2,7 @@ package com.vinorsoft.nhanvien.config.exceptionhandler;
 
 
 import com.vinorsoft.nhanvien.common.enums.response.ErrorCode;
+import com.vinorsoft.nhanvien.common.exception.BadRequestException;
 import com.vinorsoft.nhanvien.common.exception.NotFoundException;
 import com.vinorsoft.nhanvien.common.payload.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<CommonResponse> handleNotFoundException(NotFoundException e) {
         log.error("NotFoundException: {}", e.getMessage());
-        return new ResponseEntity<>(new CommonResponse(ErrorCode.NOT_FOUND), HttpStatus.NOT_FOUND);
+        var data = new CommonResponse(ErrorCode.NOT_FOUND, e.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(data);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<CommonResponse> handleBadRequestException(BadRequestException e) {
+        log.error("BadRequestException: {}", e.getMessage());
+        var data = new CommonResponse(ErrorCode.BAD_REQUEST, e.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(data);
     }
 
     @ExceptionHandler(Exception.class)
